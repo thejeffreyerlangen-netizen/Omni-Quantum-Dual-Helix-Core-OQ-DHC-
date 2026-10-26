@@ -41,5 +41,5 @@ oq_repo/
 
 ## Lizenz / Status
 
-Forschungs- und Simulations-Referenz. Physische Fertigungsclaims sind spekulativ;
-Software-, EDA- und FPGA-Artefakte sind spezifiziert und (soweit toolkettenunabhängig) getestet.
+Forschungs- und Simulations-Referenz. Die Projektstruktur dokumentiert Architekturkonzepte,
+Hardware- und Toolchain-Integration sowie Referenzmodelle, Test- und Syntheseworkflows.
