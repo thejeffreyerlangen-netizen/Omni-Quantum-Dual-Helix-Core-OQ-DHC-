@@ -1,0 +1,95 @@
+name: OQ-DHC SLSA SECURE RELEASE PIPELINE
+
+on:
+  workflow_dispatch:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      digests: ${{ steps.hash.outputs.hashes }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # ========================================================
+      # Schritt 1: Struktur prüfen und Artefakte kompilieren/packen
+      # ========================================================
+      - name: Build and Package OQ-DHC Core Assets
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "======================================================="
+          echo "🏗️ Starte industrialisierten OQ-DHC Build & Verpackung"
+          echo "======================================================="
+
+          mkdir -p build_dist
+
+          if [ -d "oq_repo" ]; then
+            source_dir="oq_repo"
+            echo "✓ oq_repo-Verzeichnis gefunden. Verpacke Core-Struktur..."
+          else
+            echo "⚠️ oq_repo nicht auf Root-Ebene gefunden! Verpacke verfügbare Projektstruktur..."
+            mkdir -p temp_package/oq_repo
+
+            shopt -s dotglob nullglob
+            for item in ./*; do
+              cp -a "$item" temp_package/oq_repo/
+            done
+            shopt -u dotglob nullglob
+
+            source_dir="temp_package/oq_repo"
+          fi
+
+          if [ -d "$source_dir/.git" ]; then
+            rm -rf "$source_dir/.git"
+          fi
+
+          find "$source_dir" -name ".git" -type d -prune -exec rm -rf {} + || true
+
+          if [ -f "OQ_DHC_Project_Overview.mp4" ]; then
+            cp OQ_DHC_Project_Overview.mp4 build_dist/
+          fi
+
+          zip -r build_dist/OQ-DHC_Core_Architecture.zip "$source_dir" -x "*/.git/*" -x "*/.git" -x "*.git*"
+
+          echo "✓ Build-Schritt erfolgreich abgeschlossen. Folgende Artefakte sind bereit zur Versiegelung:"
+          ls -la build_dist/
+
+      # ========================================================
+      # Schritt 2: Unbestechliche SHA256-Fingerabdrücke berechnen
+      # ========================================================
+      - name: Generate Cryptocurrency-Grade Subjects for Provenance
+        id: hash
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd build_dist
+
+          shopt -s nullglob
+          files=(*)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "❌ Keine Artefakte im Build-Verzeichnis gefunden."
+            exit 1
+          fi
+
+          echo "hashes=$(sha256sum "${files[@]}" | base64 -w0)" >> "${GITHUB_OUTPUT}"
+          echo "✓ Krypto-Fingerabdrücke für SLSA erfolgreich im Output-Slot verankert."
+
+  # ========================================================
+  # Schritt 3: Der offizielle OpenSSF SLSA-Level-3-Generator
+  # ========================================================
+  provenance:
+    needs: [build]
+    permissions:
+      actions: read
+      id-token: write
+      contents: write
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v1.4.0
+    with:
+      base64-subjects: "${{ needs.build.outputs.digests }}"
+      upload-assets: true
