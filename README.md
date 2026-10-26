@@ -1,5 +1,7 @@
 # Omni Quantum Dual Helix Core (OQ-DHC) – Complete Project v1.1
 
+[![OQ-DHC SLSA SECURE RELEASE PIPELINE](https://github.com/thejeffreyerlangen-netizen/Omni-Quantum-Dual-Helix-Core-OQ-DHC-/actions/workflows/slsa-release.yml/badge.svg)](https://github.com/thejeffreyerlangen-netizen/Omni-Quantum-Dual-Helix-Core-OQ-DHC-/actions/workflows/slsa-release.yml)
+
 ![Version](https://img.shields.io/badge/Kernel-v1.1.0%20Hardened-green?style=for-the-badge)
 ![SWAT](https://img.shields.io/badge/S.W.A.T.-Fail--Closed-red?style=for-the-badge)
 
