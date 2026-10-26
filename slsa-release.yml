@@ -1,0 +1,21 @@
+if [ -d "oq_repo" ]; then
+  source_dir="oq_repo"
+  echo "✓ oq_repo-Verzeichnis gefunden. Verpacke Core-Struktur..."
+else
+  echo "⚠️ oq_repo nicht auf Root-Ebene gefunden! Verpacke verfügbare Projektstruktur..."
+  rm -rf staging
+  mkdir -p staging
+
+  shopt -s dotglob nullglob
+  for item in ./*; do
+    case "$item" in
+      "./staging"|"./temp_package"|"./.git"|"./oq_repo")
+        continue
+        ;;
+    esac
+    cp -a "$item" staging/
+  done
+  shopt -u dotglob nullglob
+
+  source_dir="staging"
+fi
