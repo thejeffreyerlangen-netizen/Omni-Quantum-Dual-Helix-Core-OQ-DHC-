@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>OQ-DHC Development Board – Floorplan</title>
+<style>
+  body { font-family: system-ui, sans-serif; background:#0d1117; color:#e6edf3; margin:0; padding:2rem; }
+  h1 { color:#58a6ff; }
+  .board {
+    position: relative;
+    width: 700px; height: 560px;
+    background: #161b22;
+    border: 3px solid #30363d;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+  }
+  .block {
+    position: absolute;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .bga { background:#1f6feb; color:#fff; border:2px solid #58a6ff; }
+  .analog { background:#238636; color:#fff; }
+  .digital { background:#6e40c9; color:#fff; }
+  .swat { background:#da3633; color:#fff; }
+  .wallet { background:#bf8700; color:#000; }
+  .io { background:#f0883e; color:#000; }
+  .debug { background:#30363d; color:#e6edf3; border:1px solid #8b949e; }
+  .osc { background:#3fb950; color:#000; }
+  .label { position:absolute; font-size:0.7rem; color:#8b949e; }
+  table { border-collapse: collapse; margin-top:1.5rem; }
+  th,td { border:1px solid #30363d; padding:0.4rem 0.7rem; }
+  th { background:#21262d; }
+</style>
+</head>
+<body>
+<h1>OQ-DHC Development Board – Floorplan (100 × 80 mm)</h1>
+<p>Top-View · Maßstab ca. 7 px/mm · Kernkomponenten</p>
+
+<div class="board">
+  <!-- BGA center -->
+  <div class="block bga" style="left:260px; top:180px; width:180px; height:180px;">
+    OQ-DHC<br>BGA-144<br><small>0.8 mm pitch</small>
+  </div>
+
+  <!-- Analog PSU left -->
+  <div class="block analog" style="left:20px; top:40px; width:120px; height:90px;">
+    ANALOG PSU<br>+3V3_A LDO<br>ultra-low noise
+  </div>
+
+  <!-- OSC -->
+  <div class="block osc" style="left:20px; top:150px; width:120px; height:60px;">
+    OSC REF<br>98.112 Hz TCXO
+  </div>
+
+  <!-- Digital PSU right -->
+  <div class="block digital" style="left:560px; top:40px; width:120px; height:90px;">
+    DIGITAL PSU<br>+1V8 / +3V3<br>DC/DC + LDO
+  </div>
+
+  <!-- SWAT -->
+  <div class="block swat" style="left:280px; top:390px; width:140px; height:70px;">
+    TX-9942<br>SWAT Relay + Isolator
+  </div>
+
+  <!-- Wallet -->
+  <div class="block wallet" style="left:480px; top:200px; width:110px; height:80px;">
+    CRYPTO<br>WALLET<br>Secure Element
+  </div>
+
+  <!-- HS I/O bottom -->
+  <div class="block io" style="left:40px; top:480px; width:620px; height:50px;">
+    HIGH-SPEED I/O RING · 13 Diff-Pairs · FMC / Q-Strip
+  </div>
+
+  <!-- Debug left bottom -->
+  <div class="block debug" style="left:20px; top:390px; width:100px; height:55px;">
+    USB-C<br>Debug + PWR
+  </div>
+  <div class="block debug" style="left:140px; top:390px; width:90px; height:55px;">
+    JTAG / SWD
+  </div>
+  <div class="block debug" style="left:480px; top:390px; width:90px; height:55px;">
+    Status LEDs
+  </div>
+  <div class="block debug" style="left:590px; top:390px; width:90px; height:55px;">
+    Expansion<br>2×20
+  </div>
+</div>
+
+<table>
+  <tr><th>Zone</th><th>Funktion</th><th>Domain</th></tr>
+  <tr><td>BGA-144 (Zentrum)</td><td>OQ-DHC Die + Package</td><td>Hybrid</td></tr>
+  <tr><td>Links oben</td><td>Analog-LDO + Filter</td><td>VCC_ANALOG</td></tr>
+  <tr><td>Links Mitte</td><td>Träger-/Modulations-Referenz</td><td>Analog</td></tr>
+  <tr><td>Rechts oben</td><td>Digital-Core + I/O Supply</td><td>VCC_DIGITAL</td></tr>
+  <tr><td>Rechts Mitte</td><td>Secure Element (Wallet)</td><td>Digital + isolierbar</td></tr>
+  <tr><td>Unten Mitte</td><td>Mechanischer SWAT-Interlock</td><td>Isoliert 5 V</td></tr>
+  <tr><td>Unterkante</td><td>13-Kanal Hochgeschwindigkeits-Ring</td><td>HS_IO</td></tr>
+</table>
+
+<p style="margin-top:1.5rem;color:#8b949e;">
+Vollständige Pin-Belegung und Design-Rules: siehe <code>oq_dhc_bga144_pinout_specification.html</code> und <code>OQ_DHC_Development_Board_v1.md</code>.
+</p>
+</body>
+</html>

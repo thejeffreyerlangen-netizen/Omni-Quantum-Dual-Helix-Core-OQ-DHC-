@@ -1,0 +1,20 @@
+{
+  "project": "oq_dhc_fpga_bridge",
+  "target": "target_oq_dhc.py",
+  "platform": "oq_dhc_platform.py",
+  "part": "xc7a35tcsg324-1",
+  "sys_clk_freq_hz": 100000000,
+  "bridge_csr": {
+    "control": "execute | reset pulses",
+    "status": "swat[1:0] system[1:0] wallet[1:0]",
+    "residual": "16-bit",
+    "cycle": "32-bit",
+    "psi_addr": "0..47",
+    "psi_data": "signed 16-bit",
+    "psi_we": "write pulse"
+  },
+  "sv_core": "../rtl/oq_dhc_fpga_bridge.sv",
+  "constraints": "../constraints/oq_dhc_pins.xdc",
+  "software_driver": "software/oq_dhc_driver.h",
+  "build": "./build_oq_dhc.sh"
+}
