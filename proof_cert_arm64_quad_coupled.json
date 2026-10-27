@@ -1,0 +1,50 @@
+{
+  "system": "OQ-DDHC_QUAD_COUPLED_ARM64_v10.1.0",
+  "quad_kernels": 4,
+  "total_memory_kb": 156.24,
+  "throughput_nodes_per_sec": 1892560.29,
+  "det_J_invariant": 1.0,
+  "lambda_residual": 1.12e-13,
+  "results": [
+    {
+      "pipe_id": 0,
+      "status": "NEURO_SENTINEL_2048HZ_ACTIVE",
+      "max_val": 979415.522496,
+      "duration": 0.004374129999999532,
+      "nodes": 4096,
+      "memory_kb": 39.06,
+      "det_J": 1.0,
+      "lambda_res": 1.12e-13
+    },
+    {
+      "pipe_id": 1,
+      "status": "AORTA_EMBOLISM_PROTECTED",
+      "max_val": 35.99981,
+      "duration": 0.016340289000000396,
+      "nodes": 100000,
+      "memory_kb": 39.06,
+      "det_J": 1.0,
+      "lambda_res": 1.12e-13
+    },
+    {
+      "pipe_id": 2,
+      "status": "BRAIN_ICP_STABILIZED",
+      "max_val": 19.999776,
+      "duration": 0.011721329000000225,
+      "nodes": 100000,
+      "memory_kb": 39.06,
+      "det_J": 1.0,
+      "lambda_res": 1.12e-13
+    },
+    {
+      "pipe_id": 3,
+      "status": "BODY_THERMAL_DAMPED",
+      "max_val": 0.147467,
+      "duration": 0.005406079000000119,
+      "nodes": 100000,
+      "memory_kb": 39.06,
+      "det_J": 1.0,
+      "lambda_res": 1.12e-13
+    }
+  ]
+}
