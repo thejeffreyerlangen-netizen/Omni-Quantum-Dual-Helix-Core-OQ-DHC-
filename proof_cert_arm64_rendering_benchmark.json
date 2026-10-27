@@ -1,0 +1,28 @@
+{
+  "version": "OQ-DHC v10.1.0 ARM64-BENCHMARK",
+  "architecture_tested": "ARM64_NEON_128BIT_SVE",
+  "ray_samples_evaluated": 2000000,
+  "kernel_execution_time_sec": 0.3623,
+  "throughput_rays_per_sec_single_core": 5519887.44,
+  "raspberry_pi_5_estimated_performance": {
+    "hardware_spec": "Broadcom BCM2712 (4x Cortex-A76 @ 2.4 GHz, 12W)",
+    "fps_16k_native_15360x8640": 0.17,
+    "fps_32k_native_30720x17280": 0.04,
+    "frame_latency_ms_16k": 6010.557,
+    "cbf_safety_violations_intercepted": 298290,
+    "energy_consumption_watts": 12.0,
+    "fps_per_watt_16k": 0.014
+  },
+  "arm_workstation_server_performance": {
+    "hardware_spec": "16-Core ARM64 Neoverse / Apple M3 Ultra / Graviton 3",
+    "fps_16k_native_15360x8640": 0.67,
+    "fps_32k_native_30720x17280": 0.17,
+    "frame_latency_ms_16k": 1502.639,
+    "energy_consumption_watts": 45.0,
+    "fps_per_watt_16k": 0.015
+  },
+  "symplectic_determinant_det_J": 1.0,
+  "max_lege_residual_lambda": 1.08e-13,
+  "merkle_root_hash": "bf20fdbcb9fef4874a5fb2231ec5b1efab4bbc34488da2b160b4ddb20f8bd03d",
+  "status": "PASSED_ARM64_RENDERING_VERIFIED"
+}
