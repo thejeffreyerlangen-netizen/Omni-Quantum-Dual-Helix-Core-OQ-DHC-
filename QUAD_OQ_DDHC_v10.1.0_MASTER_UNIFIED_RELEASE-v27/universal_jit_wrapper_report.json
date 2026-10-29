@@ -1,0 +1,11 @@
+{
+  "module": "Universal JIT Wrapper (PRFE & E-Motoren-Modulation)",
+  "nodes_processed": 5000000,
+  "metrics": {
+    "pure_python_ms": 7450.61,
+    "universal_jit_ms": 27.38,
+    "speedup_factor": 272.11869978086196,
+    "max_numerical_diff": 3.55e-15,
+    "status": "UNIVERSAL_AUTOMATIC_JIT_ACCELERATION_SUCCESSFUL"
+  }
+}

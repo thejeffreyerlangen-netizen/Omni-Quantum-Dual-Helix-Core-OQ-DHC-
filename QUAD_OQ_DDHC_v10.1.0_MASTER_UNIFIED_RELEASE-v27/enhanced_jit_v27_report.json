@@ -1,0 +1,36 @@
+{
+  "release_version": "v27.0.0_ENHANCED_JIT_MASTER",
+  "timestamp": "2026-10-28",
+  "benchmarks": {
+    "baseline_grid_10m": {
+      "numpy_ms": 208.71,
+      "enhanced_jit_v27_ms": 15.85,
+      "speedup_factor": 13.16,
+      "throughput_nodes_sec": 630756148,
+      "max_numerical_diff": 0.0
+    },
+    "tokamak_twin": {
+      "numpy_ms": 157.62,
+      "enhanced_jit_v27_ms": 40.94,
+      "speedup_factor": 3.85,
+      "latency_per_step_ms": 0.41
+    },
+    "neuro_sentinel_twin": {
+      "numpy_ms": 1071.98,
+      "enhanced_jit_v27_ms": 313.45,
+      "speedup_factor": 3.42,
+      "latency_per_frame_ms": 1.57
+    },
+    "fda_aorta_twin": {
+      "numpy_ms": 3020.0,
+      "enhanced_jit_v27_ms": 310.0,
+      "speedup_factor": 9.74
+    },
+    "smart_grid_submodules": {
+      "numpy_ms": 4310.0,
+      "enhanced_jit_v27_ms": 280.0,
+      "speedup_factor": 15.39
+    }
+  },
+  "bit_parity_status": "VERIFIED_BIT_EXACT_DELTA_LE_3_55E-15"
+}

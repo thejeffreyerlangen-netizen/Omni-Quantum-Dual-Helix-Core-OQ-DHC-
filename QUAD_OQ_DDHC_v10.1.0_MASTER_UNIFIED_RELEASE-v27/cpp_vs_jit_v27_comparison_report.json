@@ -1,0 +1,12 @@
+{
+  "test_name": "Native_LLVM_SIMD_vs_NumPy_JIT_v27_Duel",
+  "nodes_evaluated": 2000000,
+  "timesteps": 50,
+  "numpy_ms": 9537.47,
+  "bilingual_jit_v27_ms": 98.22,
+  "numpy_throughput_m_nodes_sec": 10.48,
+  "jit_throughput_m_nodes_sec": 1018.17,
+  "speedup_factor": 97.11,
+  "numerical_parity_diff": 0.0,
+  "status": "PARITY_MATCHED_BIT_EXACT_SIMD_ACCELERATED"
+}
